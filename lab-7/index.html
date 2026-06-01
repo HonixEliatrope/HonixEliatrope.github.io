@@ -30,6 +30,47 @@
       image-rendering: -webkit-optimize-contrast;
       image-rendering: crisp-edges;
     }
+    
+    /* Правильный clearfix через CSS */
+    .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    
+    /* Стили для списков с float элементами */
+    .float-list {
+      list-style: none;
+      margin: 15px;
+      padding: 10px;
+      box-shadow: 0 0 5px #aaa;
+      background: #FFF;
+      border-radius: 3px;
+      overflow: hidden; /* Альтернатива clearfix для контейнера */
+    }
+    
+    .float-list li {
+      float: left;
+    }
+    
+    .price-img-li {
+      width: 36%;
+    }
+    
+    .price-text-li {
+      width: 61%;
+      margin-left: 1em;
+    }
+    
+    .work-title-li {
+      width: 20%;
+      min-width: 100px;
+    }
+    
+    .work-img-li {
+      width: 75%;
+      margin-left: 1em;
+    }
   </style>
 </head>
 <body>
@@ -37,8 +78,7 @@
 <div class="container">
   <header>
     <div id="logo" style="float:left">
-      <!-- Убрал принудительную высоту, чтобы сохранить пропорции -->
-      <img src="images/images/logo.jpg" style="height: auto; width: auto; max-height: 100px;">
+      <img src="images/images/logo.jpg" alt="Логотип Little Stick" style="height: auto; width: auto; max-height: 100px;">
     </div>
     <div id="contacts" style="float:right;">
       <i class="fa fa-mobile fa-lg"></i> +7-966-675-1610 |
@@ -77,8 +117,7 @@
 
 <div class="container">
   <div id="header-bottom" style="position:relative;">
-    <!-- Убрал принудительную ширину 100%, чтобы изображение не растягивалось -->
-    <img src="images/images/banner.jpg" style="width: 100%; height: auto;">
+    <img src="images/images/banner.jpg" alt="Баннер с работами Little Stick" style="width: 100%; height: auto;">
     <div id="bannertext" style="position:absolute; top:10%; width:100%; text-align:center; color:black;">
       <div class="hidden-xs">
         <h1>Little Stick<br />
@@ -100,18 +139,17 @@
       <p class="lead">Мои основные услуги</p>
       <hr />
       <div class="col-md-4">
-        <!-- Добавил класс img-responsive для правильного масштабирования -->
-        <img src="images/images/img-1.jpg" class="img-responsive">
+        <img src="images/images/img-1.jpg" class="img-responsive" alt="Пример коммишена - работа на заказ">
         <h3>Коммишен</h3>
         <p>«Здравствуйте! Я художник, могу сделать вам коммишен (это рисунок специально для вас на заказ). Если интересно, напишите в личку, обсудим идею и цену».</p>
       </div>
       <div class="col-md-4">
-        <img src="images/images/img-3.jpg" class="img-responsive">
+        <img src="images/images/img-3.jpg" class="img-responsive" alt="Пример трейда - обмен работами с другим художником">
         <h3>Трейд</h3>
         <p>«Твой стиль очень крутой. Хочешь сделать трейд? (Это когда я рисую твоего персонажа, а ты — моего, обмениваемся работами бесплатно). Если интересно, давай попробуем».</p>
       </div>
       <div class="col-md-4">
-        <img src="images/images/img-2.png" class="img-responsive">
+        <img src="images/images/img-2.png" class="img-responsive" alt="Пример гифта - бесплатный подарочный рисунок">
         <h3>Гифт</h3>
         <p>«Привет! Я хочу сделать тебе гифт (бесплатный подарочный рисунок) просто для настроения. Могу нарисовать твоего персонажа или любимого героя. Разумеется, если мне понравится задумка для арта!».</p>
       </div>
@@ -121,34 +159,29 @@
 
 <div class="container">
   <div id="method">
-    <div class="row" style="text-align:center; background:#f3f3f3;">
+    <div class="row" style="text-align:center; background:#f3f3f3; padding-bottom: 15px;">
       <h2>Прайс</h2>
       <p class="lead">Стоимость и форматы работ</p>
       <hr />
 
-      <ul style="list-style:none; margin:15px; padding:10px; box-shadow:0 0 5px #aaa; background: #FFF; border-radius: 3px;">
-        <!-- Исправил: картинка не будет пикселиться, т.к. она масштабируется пропорционально -->
-        <li style="float:left; width: 36%;"><img src="images/images/pic1.jpg" class="img-responsive"></li>
-        <li style="float:left; width:61%; margin-left:1em;"><h3>1. ФУЛЛ</h3><p>Фулл (полнорост) — это рисунок вашего персонажа в полный рост. Дедлайн 1-3 недели, цена зависит от количества деталей, фона и шейдинга.</p></li>
-        <div class="clearfix"></div>
+      <ul class="float-list">
+        <li class="price-img-li"><img src="images/images/pic1.jpg" class="img-responsive" alt="Пример работы в формате ФУЛЛ - полноростовой рисунок"></li>
+        <li class="price-text-li"><h3>1. ФУЛЛ</h3><p>Фулл (полнорост) — это рисунок вашего персонажа в полный рост. Дедлайн 1-3 недели, цена зависит от количества деталей, фона и шейдинга.</p></li>
       </ul>
 
-      <ul style="list-style:none; margin:15px; padding:10px; box-shadow:0 0 5px #aaa; background: #FFF; border-radius: 3px;">
-        <li style="float:left; width: 36%;"><img src="images/images/pic2.jpg" class="img-responsive"></li>
-        <li style="float:left; width:61%; margin-left:1em;"><h3>2. ХАЛФ</h3><p>Халф — это рисунок вашего персонажа по пояс/по грудь. Дедлайн 2 недели, цена зависит от количества деталей, фона и шейдинга.</p></li>
-        <div class="clearfix"></div>
+      <ul class="float-list">
+        <li class="price-img-li"><img src="images/images/pic2.jpg" class="img-responsive" alt="Пример работы в формате ХАЛФ - рисунок по пояс"></li>
+        <li class="price-text-li"><h3>2. ХАЛФ</h3><p>Халф — это рисунок вашего персонажа по пояс/по грудь. Дедлайн 2 недели, цена зависит от количества деталей, фона и шейдинга.</p></li>
       </ul>
 
-      <ul style="list-style:none; margin:15px; padding:10px; box-shadow:0 0 5px #aaa; background: #FFF; border-radius: 3px;">
-        <li style="float:left; width: 36%;"><img src="images/images/pic3.jpg" class="img-responsive"></li>
-        <li style="float:left; width:61%; margin-left:1em;"><h3>3. ХЕД</h3><p>Хед — голова вашего персонажа, возможно даже чуть ниже шеи. Дедлайн 5 дней.</p></li>
-        <div class="clearfix"></div>
+      <ul class="float-list">
+        <li class="price-img-li"><img src="images/images/pic3.jpg" class="img-responsive" alt="Пример работы в формате ХЕД - портрет персонажа"></li>
+        <li class="price-text-li"><h3>3. ХЕД</h3><p>Хед — голова вашего персонажа, возможно даже чуть ниже шеи. Дедлайн 5 дней.</p></li>
       </ul>
 
-      <ul style="list-style:none; margin:15px; padding:10px; box-shadow:0 0 5px #aaa; background: #FFF; border-radius: 3px;">
-        <li style="float:left; width: 36%;"><img src="images/images/pic4.jpg" class="img-responsive"></li>
-        <li style="float:left; width:61%; margin-left:1em;"><h3>4. РЕФ</h3><p>Реф (референс) — рисунок вашего персонажа в полный рост с разных ракурсов и в разных позах. Цена договорная, зависит от количества деталей, правок и оформления.</p></li>
-        <div class="clearfix"></div>
+      <ul class="float-list">
+        <li class="price-img-li"><img src="images/images/pic4.jpg" class="img-responsive" alt="Пример работы в формате РЕФ - референсный лист персонажа"></li>
+        <li class="price-text-li"><h3>4. РЕФ</h3><p>Реф (референс) — рисунок вашего персонажа в полный рост с разных ракурсов и в разных позах. Цена договорная, зависит от количества деталей, правок и оформления.</p></li>
       </ul>
     </div>
   </div>
@@ -156,28 +189,24 @@
 
 <div class="container">
   <div id="work">
-    <div class="row" style="text-align:center; background:#28a745; color:#fff;">
+    <div class="row" style="text-align:center; background:#28a745; color:#fff; padding-bottom: 15px;">
       <h2>Мои проекты</h2>
       <p class="lead">Законченные коллаборации</p>
       <hr />
 
-      <ul style="list-style:none; margin:15px; padding:10px; box-shadow:0 0 5px #aaa; background: #FFF; border-radius: 3px; color:black;">
-        <li style="float:left; width:20%; min-width:100px;"><h3>Коллаборация 1</h3></li>
-        <!-- Изображение теперь не пикселится -->
-        <li style="float:left; width:75%; margin-left:1em;"><img src="images/images/w1.jpg" class="img-responsive"></li>
-        <div class="clearfix"></div>
+      <ul class="float-list" style="color:black;">
+        <li class="work-title-li"><h3>Коллаборация 1</h3></li>
+        <li class="work-img-li"><img src="images/images/w1.jpg" class="img-responsive" alt="Коллаборация 1 с другим художником"></li>
       </ul>
 
-      <ul style="list-style:none; margin:15px; padding:10px; box-shadow:0 0 5px #aaa; background: #FFF; border-radius: 3px; color:black;">
-        <li style="float:left; width:20%; min-width:100px;"><h3>Коллаборация 2</h3></li>
-        <li style="float:left; width:75%; margin-left:1em;"><img src="images/images/w2.jpg" class="img-responsive"></li>
-        <div class="clearfix"></div>
+      <ul class="float-list" style="color:black;">
+        <li class="work-title-li"><h3>Коллаборация 2</h3></li>
+        <li class="work-img-li"><img src="images/images/w2.jpg" class="img-responsive" alt="Коллаборация 2 с другим художником"></li>
       </ul>
 
-      <ul style="list-style:none; margin:15px; padding:10px; box-shadow:0 0 5px #aaa; background: #FFF; border-radius: 3px; color:black;">
-        <li style="float:left; width:20%; min-width:100px;"><h3>Коллаборация 3</h3></li>
-        <li style="float:left; width:75%; margin-left:1em;"><img src="images/images/w3.jpg" class="img-responsive"></li>
-        <div class="clearfix"></div>
+      <ul class="float-list" style="color:black;">
+        <li class="work-title-li"><h3>Коллаборация 3</h3></li>
+        <li class="work-img-li"><img src="images/images/w3.jpg" class="img-responsive" alt="Коллаборация 3 с другим художником"></li>
       </ul>
     </div>
   </div>
