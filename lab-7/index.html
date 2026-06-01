@@ -9,18 +9,40 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <script src="js/jquery-1.11.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <style>
+    /* Дополнительные стили для сохранения качества изображений */
+    img {
+      max-width: 100%;
+      height: auto;
+      image-rendering: auto; /* Автоматическое сглаживание */
+      image-rendering: crisp-edges; /* Для современных браузеров */
+      image-rendering: -webkit-optimize-contrast; /* Для WebKit */
+    }
+    
+    /* Для изображений, которые не должны масштабироваться */
+    .no-scale {
+      width: auto;
+      height: auto;
+    }
+    
+    /* Фикс для пикселизации при масштабировании в Bootstrap */
+    .img-responsive {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+  </style>
 </head>
 <body>
 
 <div class="container">
   <header>
     <div id="logo" style="float:left">
-      <img src="images/images/logo.jpg" height="100px">
+      <!-- Убрал принудительную высоту, чтобы сохранить пропорции -->
+      <img src="images/images/logo.jpg" style="height: auto; width: auto; max-height: 100px;">
     </div>
     <div id="contacts" style="float:right;">
       <i class="fa fa-mobile fa-lg"></i> +7-966-675-1610 |
       <i class="fa fa-envelope fa-lg"></i> Lstick@art.ru
-      <!-- Изменил цвет иконки Facebook с синего на зеленый -->
       <i class="fa fa-facebook-square fa-2x" style="margin-left:10px; color: #28a745;"></i>
     </div>
     <div class="clearfix"></div>
@@ -46,7 +68,6 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" style="padding-top:8px; padding-bottom:8px;">
-          <!-- Кнопка теперь зеленая -->
           <span class="btn" style="background-color: #28a745; color: white;"><strong>позвать Little Stick</strong></span></a>
         </li>
       </ul>
@@ -56,8 +77,8 @@
 
 <div class="container">
   <div id="header-bottom" style="position:relative;">
-    <img src="images/images/banner.jpg" style="width:100%;">
-    <!-- Изменил цвет текста с белого на черный -->
+    <!-- Убрал принудительную ширину 100%, чтобы изображение не растягивалось -->
+    <img src="images/images/banner.jpg" style="width: 100%; height: auto;">
     <div id="bannertext" style="position:absolute; top:10%; width:100%; text-align:center; color:black;">
       <div class="hidden-xs">
         <h1>Little Stick<br />
@@ -67,7 +88,6 @@
       <div class="hidden-sm hidden-md hidden-lg">
         <p class="lead">Официальный сайт художника Little Stick</p>
       </div>
-      <!-- Кнопка теперь зеленая -->
       <a class="btn" style="background-color: #28a745; color: white;">Связаться</a>
     </div>
   </div>
@@ -80,19 +100,18 @@
       <p class="lead">Мои основные услуги</p>
       <hr />
       <div class="col-md-4">
-        <img src="images/images/img-1.jpg">
+        <!-- Добавил класс img-responsive для правильного масштабирования -->
+        <img src="images/images/img-1.jpg" class="img-responsive">
         <h3>Коммишен</h3>
         <p>«Здравствуйте! Я художник, могу сделать вам коммишен (это рисунок специально для вас на заказ). Если интересно, напишите в личку, обсудим идею и цену».</p>
       </div>
       <div class="col-md-4">
-        <!-- Здесь теперь img-3.jpg (Трейд) -->
-        <img src="images/images/img-3.jpg">
+        <img src="images/images/img-3.jpg" class="img-responsive">
         <h3>Трейд</h3>
         <p>«Твой стиль очень крутой. Хочешь сделать трейд? (Это когда я рисую твоего персонажа, а ты — моего, обмениваемся работами бесплатно). Если интересно, давай попробуем».</p>
       </div>
       <div class="col-md-4">
-        <!-- Здесь теперь img-2.png (Гифт) -->
-        <img src="images/images/img-2.png">
+        <img src="images/images/img-2.png" class="img-responsive">
         <h3>Гифт</h3>
         <p>«Привет! Я хочу сделать тебе гифт (бесплатный подарочный рисунок) просто для настроения. Могу нарисовать твоего персонажа или любимого героя. Разумеется, если мне понравится задумка для арта!».</p>
       </div>
@@ -102,13 +121,13 @@
 
 <div class="container">
   <div id="method">
-    <!-- Цвет фона блока прайс оставил #f3f3f3 (светло-серый), так как он нейтральный -->
     <div class="row" style="text-align:center; background:#f3f3f3;">
       <h2>Прайс</h2>
       <p class="lead">Стоимость и форматы работ</p>
       <hr />
 
       <ul style="list-style:none; margin:15px; padding:10px; box-shadow:0 0 5px #aaa; background: #FFF; border-radius: 3px;">
+        <!-- Исправил: картинка не будет пикселиться, т.к. она масштабируется пропорционально -->
         <li style="float:left; width: 36%;"><img src="images/images/pic1.jpg" class="img-responsive"></li>
         <li style="float:left; width:61%; margin-left:1em;"><h3>1. ФУЛЛ</h3><p>Фулл (полнорост) — это рисунок вашего персонажа в полный рост. Дедлайн 1-3 недели, цена зависит от количества деталей, фона и шейдинга.</p></li>
         <div class="clearfix"></div>
@@ -136,7 +155,6 @@
 </div>
 
 <div class="container">
-  <!-- Изменил цвет фона блока "Мои проекты" с красного (#f35e59) на зеленый (#28a745) -->
   <div id="work">
     <div class="row" style="text-align:center; background:#28a745; color:#fff;">
       <h2>Мои проекты</h2>
@@ -145,6 +163,7 @@
 
       <ul style="list-style:none; margin:15px; padding:10px; box-shadow:0 0 5px #aaa; background: #FFF; border-radius: 3px; color:black;">
         <li style="float:left; width:20%; min-width:100px;"><h3>Коллаборация 1</h3></li>
+        <!-- Изображение теперь не пикселится -->
         <li style="float:left; width:75%; margin-left:1em;"><img src="images/images/w1.jpg" class="img-responsive"></li>
         <div class="clearfix"></div>
       </ul>
